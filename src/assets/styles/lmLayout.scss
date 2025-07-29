@@ -1,0 +1,14 @@
+@import "responseLayout.scss";
+
+@include respond-to("phone") {
+}
+
+@include respond-to("phone-x") {
+}
+
+@include respond-to("ipad") {
+}
+@include respond-to("pc") {
+}
+@include respond-to("pc-x") {
+}

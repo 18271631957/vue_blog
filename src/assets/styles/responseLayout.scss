@@ -1,0 +1,159 @@
+//响应式断点
+$breakpoints: (
+  "phone": (
+    320px,
+    480px,
+  ),
+  "phone-x": (
+    481px,
+    768px,
+  ),
+  "ipad": (
+    769px,
+    992px,
+  ),
+  "pc": (
+    993px,
+    1199px,
+  ),
+  "pc-x": 1200px,
+);
+
+@mixin flex($layout) {
+  display: flex;
+  justify-content: $layout;
+  align-items: $layout;
+}
+
+@mixin respond-to($breakname) {
+  $bp: map-get($breakpoints, $breakname);
+  @if type-of($bp) == "list" {
+    $min: nth($bp, 1);
+    $max: nth($bp, 2);
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $bp) {
+      @content;
+    }
+  }
+}
+
+@include respond-to("phone") {
+  .hidden-phone-only {
+    display: none !important;
+  }
+  .hidden-phone-x-and-down {
+    display: none !important;
+  }
+  .hidden-phone-x-and-up {
+    display: none !important;
+  }
+  .hidden-ipad-and-down {
+    display: none !important;
+  }
+  .hidden-pc-and-down {
+    display: none !important;
+  }
+}
+
+@include respond-to("phone-x") {
+  .hidden-phone-x-only {
+    display: none !important;
+  }
+  .hidden-phone-x-and-down {
+    display: none !important;
+  }
+  .hidden-phone-x-and-up {
+    display: none !important;
+  }
+  .hidden-ipad-and-down {
+    display: none !important;
+  }
+  .hidden-pc-and-down {
+    display: none !important;
+  }
+}
+
+@include respond-to("ipad") {
+  .hidden-phone-x-and-up {
+    display: none !important;
+  }
+  .hidden-ipad-only {
+    display: none !important;
+  }
+  .hidden-ipad-and-down {
+    display: none !important;
+  }
+  .hidden-ipad-and-up {
+    display: none !important;
+  }
+  .hidden-pc-and-down {
+    display: none !important;
+  }
+}
+@include respond-to("pc") {
+  .hidden-phone-x-and-up {
+    display: none !important;
+  }
+  .hidden-ipad-and-up {
+    display: none !important;
+  }
+  .hidden-pc-only {
+    display: none !important;
+  }
+  .hidden-pc-and-down {
+    display: none !important;
+  }
+  .hidden-pc-and-up {
+    display: none !important;
+  }
+}
+@include respond-to("pc-x") {
+  .hidden-phone-x-and-up {
+    display: none !important;
+  }
+  .hidden-ipad-and-up {
+    display: none !important;
+  }
+  .hidden-pc-and-up {
+    display: none !important;
+  }
+  .hidden-pc-x-only {
+    display: none !important;
+  }
+}
+
+* {
+  box-sizing: border-box !important;
+  list-style: none;
+  text-decoration: none;
+  outline: none;
+  letter-spacing: 1;
+}
+
+html,
+body {
+  background: #f4f5f7;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: mix(#fff, #282c34, 50%);
+  border: 3px solid transparent;
+  border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: mix(#fff, #282c34, 80%);
+}
+/*
+@font-face {
+  font-family: Quicksand, sans-serif;
+  src: url("https://fonts.googleapis.com/css?family=Quicksand");
+}*/
