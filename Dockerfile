@@ -1,4 +1,4 @@
-# 第一阶段：node镜像打包
+# 第一阶段：node镜像打包 test
 # 使用最新版本的Node.js镜像作为基础镜像，并给它命名为xh-blog
 FROM node:latest AS xh-blog
 # 设置工作目录为/build-app
